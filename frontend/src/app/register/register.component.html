@@ -1,0 +1,49 @@
+<!-- register.component.html -->
+<div class="container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-header">
+            <h2>Cadastro</h2>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="user.name" name="name" required>
+              </div>
+  
+              <div class="form-group">
+                <label for="login">Email:</label>
+                <input type="email" class="form-control" id="login" [(ngModel)]="user.login" name="login" required>
+              </div>
+  
+              <div class="form-group">
+                <label for="password">Senha:</label>
+                <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password" required>
+              </div>
+  
+              <div class="form-group">
+                <label for="confirmPassword">Confirme a Senha:</label>
+                <input type="password" class="form-control" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+                <div *ngIf="confirmPassword !== '' && user.password !== confirmPassword" class="text-danger">
+                  As senhas não coincidem.
+                </div>
+              </div>
+  
+              <div class="form-group">
+                <label for="role">Função:</label>
+                <select class="form-control" id="role" [(ngModel)]="user.role" name="role" required>
+                  <option value="USER">Usuário</option>
+                </select>
+              </div>
+  
+              <div class="form-group mt-2">
+                <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>  

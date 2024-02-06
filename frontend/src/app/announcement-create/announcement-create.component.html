@@ -1,0 +1,82 @@
+<style>
+    .no-padding-left {
+      padding-left: 0 !important;
+    }
+  </style>
+  
+  <div class="container-fluid no-padding-left h-100">
+    <div class="row h-100">
+      <app-sidebar class="col-md-3 col-lg-2 d-md-block bg-light sidebar"></app-sidebar>
+  
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 h-100">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Your Angular App</title>
+        </head>
+
+        <body>
+
+            <h2>{{ isEditing ? 'Editar Anúncio' : 'Criar Anúncio' }}</h2>
+            <form (ngSubmit)="onSubmit()" class="announcement-form container mt-5">
+
+                <div class="form-group mb-3">
+                    <label for="name">Título do anúncio:</label>
+                    <input [(ngModel)]="announcement.name" name="name" id="name" class="form-control" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="price">Preço:</label>
+                    <input [(ngModel)]="announcement.price" name="price" id="price" type="number" class="form-control" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="birth">Nascimento do animal:</label>
+                    <input [(ngModel)]="announcement.birth" name="birth" id="birth" type="date" class="form-control" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="rga">Registro Geral do Animal:</label>
+                    <input [(ngModel)]="announcement.rga" name="rga" id="rga" class="form-control">
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="code">Código do animal (brinco):</label>
+                    <input [(ngModel)]="announcement.code" name="code" id="code" class="form-control" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="idBreed">Raça:</label>
+                    <input [(ngModel)]="announcement.idBreed" name="idBreed" id="idBreed" class="form-control" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="idBreedPaternal">Raça paternal:</label>
+                    <input [(ngModel)]="announcement.idBreedPaternal" name="idBreedPaternal" id="idBreedPaternal" class="form-control" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="idBreedMaternal">Raça maternal:</label>
+                    <input [(ngModel)]="announcement.idBreedMaternal" name="idBreedMaternal" id="idBreedMaternal" class="form-control" required>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="note">Observações:</label>
+                    <textarea [(ngModel)]="announcement.note" name="note" id="note" class="form-control" rows="7" required></textarea>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="idOwner">ID Owner:</label>
+                    <input [(ngModel)]="announcement.idOwner" name="idOwner" id="idOwner" class="form-control" required>
+                </div>
+
+                <br>
+                <button type="submit" class="btn btn-primary">{{ isEditing ? 'Salvar Edição' : 'Enviar' }}</button>
+            </form>
+
+        </body>
+    </main>
+    
+    <app-footer></app-footer>
+  </div>
+</div>

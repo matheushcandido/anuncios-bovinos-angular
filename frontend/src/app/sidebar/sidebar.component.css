@@ -1,0 +1,41 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    background-color: #343a40;
+    height: 93vh;
+    padding: 20px;
+    margin-left: 0;
+}
+
+.sidebar h3 {
+    color: #fff;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #adb5bd;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar a:hover {
+    color: #fff;
+}
+
+.sidebar .bi {
+    margin-right: 10px;
+}

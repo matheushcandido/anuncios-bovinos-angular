@@ -1,0 +1,35 @@
+<style>
+  .no-padding-left {
+    padding-left: 0 !important;
+  }
+</style>
+
+<div class="container-fluid no-padding-left h-100">
+  <app-header></app-header>
+
+  <div class="row h-100">
+    <app-sidebar class="col-md-3 col-lg-2 d-md-block bg-light sidebar"></app-sidebar>
+
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 h-100">
+      <div class="container mt-4">
+        <div *ngFor="let announcement of announcements" class="mb-4">
+          <div class="card">
+            <div class="card-body">
+              <h2 class="card-title">{{ announcement.name }}</h2>
+              <p class="card-text">{{ announcement.note }}</p>
+              
+              <div class="btn-group">
+                <button (click)="editAnnouncement(announcement.id)" class="btn btn-warning">Editar</button>
+                <button (click)="deleteAnnouncement(announcement.id)" class="btn btn-danger">Deletar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a routerLink="/anuncios/criar" class="btn btn-primary">Criar anúncio</a>
+      </div>
+    </main>
+    
+    <app-footer></app-footer>
+  </div>
+</div>
