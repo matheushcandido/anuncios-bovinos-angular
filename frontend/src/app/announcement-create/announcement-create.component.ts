@@ -20,7 +20,6 @@ export class AnnouncementCreateComponent implements OnInit {
     idBreedPaternal: '',
     idBreedMaternal: '',
     note: '',
-    idOwner: '',
   };
 
   isEditing = false;

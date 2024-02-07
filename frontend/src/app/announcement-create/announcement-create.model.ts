@@ -9,5 +9,4 @@ export interface Announcement {
     idBreedPaternal: string;
     idBreedMaternal: string;
     note: string;
-    idOwner: string;
   }  

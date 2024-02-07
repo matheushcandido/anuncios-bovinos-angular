@@ -1,0 +1,11 @@
+.no-padding-left {
+    padding-left: 0 !important;
+  }
+
+.navbar {
+    z-index: 1000;
+}
+
+main {
+    padding-top: 70px;
+}

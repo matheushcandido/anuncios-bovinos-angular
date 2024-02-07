@@ -44,4 +44,8 @@ export class AnnouncementComponent implements OnInit {
       );
     }
   }
+
+  reportAnnouncement(id: number): void {
+    this.router.navigate(['/reportar'], { queryParams: { editId: id } });
+  }
 }
