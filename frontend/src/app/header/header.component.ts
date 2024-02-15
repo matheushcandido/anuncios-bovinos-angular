@@ -17,11 +17,23 @@ export class HeaderComponent {
     this.isDropdownOpen = !this.isDropdownOpen;
   }
 
+  hasToken(){
+    if(this.loginService.hasToken()){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   logout() {
     this.loginService.logout();
   }
 
   profile() {
     this.router.navigate(['/perfil']);
+  }
+
+  login() {
+    this.router.navigate(['/login']);
   }
 }

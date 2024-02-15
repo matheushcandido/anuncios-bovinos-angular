@@ -8,8 +8,9 @@
                 Perfil
               </button>
               <div class="dropdown-menu" aria-labelledby="userDropdown" [ngClass]="{'show': isDropdownOpen}">
-                <button class="dropdown-item" (click)="profile()">Perfil</button>
-                <button class="dropdown-item" (click)="logout()">Logout</button>
+                <button *ngIf="hasToken()" class="dropdown-item" (click)="profile()">Perfil</button>
+                <button *ngIf="hasToken()" class="dropdown-item" (click)="logout()">Logout</button>
+                <button *ngIf="!hasToken()" class="dropdown-item" (click)="login()">Login</button>
               </div>
             </li>
           </ul>

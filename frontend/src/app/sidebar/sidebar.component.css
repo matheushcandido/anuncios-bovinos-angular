@@ -6,9 +6,8 @@ body, html {
 
 .sidebar {
     background-color: #343a40;
-    height: 93vh;
+    min-height: 100vh;
     padding: 20px;
-    margin-left: 0;
 }
 
 .sidebar h3 {

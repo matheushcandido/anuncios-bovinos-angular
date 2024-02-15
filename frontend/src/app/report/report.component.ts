@@ -26,12 +26,30 @@ export class ReportComponent implements OnInit {
     );
   }
 
-  closeReport(id: number){
-
+  closeReport(id: string): void {
+    if (confirm('Tem certeza que deseja fechar este reporte?')) {
+      const closedReport = { status: 1 };
+      this.reportService.closeReport(id, closedReport).subscribe(
+        () => {
+          this.loadReports();
+        },
+        (error) => {
+          console.error('Erro ao fechar report', error);
+        }
+      );
+    }
   }
 
-  deleteReport(id: number){
-
+  deleteReport(id: string){
+    if (confirm('Tem certeza que deseja deletar este reporte?')) {
+      this.reportService.deleteReport(id).subscribe(
+        () => {
+          this.loadReports();
+        },
+        (error) => {
+          console.error('Erro ao deletar reporte', error);
+        }
+      );
+    }
   }
-
 }

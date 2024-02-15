@@ -24,7 +24,7 @@ export class ReportService {
     }
   }
 
-  deleteReport(id: number): Observable<any> {
+  deleteReport(id: string): Observable<any> {
     const token = this.cookieService.get(this.tokenKey);
     if (token) {
       const headers = new HttpHeaders({
@@ -32,6 +32,19 @@ export class ReportService {
       });
     const url = `${this.apiUrl}/${id}`;
     return this.http.delete(url, { headers });
+    } else {
+      return new Observable();
+    }
+  }
+
+  closeReport(id: string, closedReport: any): Observable<any> {
+    const token = this.cookieService.get(this.tokenKey);
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const url = `${this.apiUrl}/${id}`;
+      return this.http.put(url, closedReport, { headers });
     } else {
       return new Observable();
     }
