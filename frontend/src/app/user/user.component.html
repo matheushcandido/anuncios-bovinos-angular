@@ -1,0 +1,41 @@
+<div class="container-fluid" style="padding-left: 0;">
+    <app-header></app-header>
+  
+    <div class="row">
+      <app-sidebar class="col-md-2"></app-sidebar>
+  
+      <main class="col-md-10" style="padding-top: 70px;">
+        <div class="container mt-4">
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>Nome</th>
+                  <th>Login</th>
+                  <th>Tipo de perfil</th>
+                  <th>Status</th>
+                  <th>Bloquear</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users">
+                  <td>{{ user.name }}</td>
+                  <td>{{ user.login }}</td>
+                  <td>{{ user.role }}</td>
+                  <td>{{ user.status }}</td>
+                  <td>
+                    <a href="#" (click)="blockUser(user.id)">
+                      <i class="fas fa-lock"></i>
+                    </a>
+                  </td>                  
+                </tr>
+              </tbody>
+            </table>
+          </div>
+  
+          <a routerLink="/anuncios/criar" class="btn btn-primary">Criar anúncio</a>
+        </div>
+      </main>
+    </div>
+</div>
+  

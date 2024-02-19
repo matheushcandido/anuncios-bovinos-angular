@@ -18,7 +18,7 @@ export class LoginComponent {
       response => {
         this.loginService.storeToken(response.token);
 
-        this.router.navigate(['/anuncios']);
+        this.router.navigate(['/']);
       },
       error => {
         console.error('Login failed', error);
