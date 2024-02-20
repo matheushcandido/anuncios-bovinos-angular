@@ -30,7 +30,7 @@ export class UserService {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${token}`
       });
-      const url = `${this.apiUrl}/${id}`;
+      const url = `${this.apiUrl}/'block/'${id}`;
       return this.http.put(url, blockedUser, { headers });
     } else {
       return new Observable();

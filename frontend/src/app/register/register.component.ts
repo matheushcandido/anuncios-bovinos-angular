@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
     login: '',
     password: '',
     role: 0,
+    status: 0
   };
 
   confirmPassword: string = '';
@@ -27,6 +28,8 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {}
 
   onSubmit() {
+
+    console.log('Usuário antes do envio:', this.user);
 
     if (!this.checkPasswordMatch()) {
       console.error('As senhas não coincidem.');
