@@ -28,13 +28,25 @@ export class UserComponent implements OnInit{
 
   blockUser(id: string): void {
     if (confirm('Tem certeza que deseja bloquear este usuário?')) {
-      const closedUser = { status: 2 };
-      this.userService.blockUser(id, closedUser).subscribe(
+      this.userService.blockUser(id).subscribe(
         () => {
           this.loadUsers();
         },
         (error) => {
           console.error('Erro ao bloquear usuário', error);
+        }
+      );
+    }
+  }
+
+  unlockUser(id: string): void {
+    if (confirm('Tem certeza que deseja desbloquear este usuário?')) {
+      this.userService.unlockUser(id).subscribe(
+        () => {
+          this.loadUsers();
+        },
+        (error) => {
+          console.error('Erro ao desbloquear usuário', error);
         }
       );
     }

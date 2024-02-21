@@ -24,16 +24,29 @@ export class UserService {
     }
   }
 
-  blockUser(id: string, blockedUser: any): Observable<any> {
+  blockUser(id: string): Observable<any> {
     const token = this.cookieService.get(this.tokenKey);
     if (token) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${token}`
       });
-      const url = `${this.apiUrl}/'block/'${id}`;
-      return this.http.put(url, blockedUser, { headers });
+      const url = `${this.apiUrl}/block/${id}`;
+      return this.http.put(url, {}, { headers });
     } else {
       return new Observable();
     }
   }
+  
+  unlockUser(id: string): Observable<any> {
+    const token = this.cookieService.get(this.tokenKey);
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const url = `${this.apiUrl}/unlock/${id}`;
+      return this.http.put(url, {}, { headers });
+    } else {
+      return new Observable();
+    }
+  } 
 }

@@ -29,8 +29,6 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
 
-    console.log('Usuário antes do envio:', this.user);
-
     if (!this.checkPasswordMatch()) {
       console.error('As senhas não coincidem.');
       return;

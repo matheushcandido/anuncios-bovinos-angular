@@ -37,14 +37,14 @@ export class ReportService {
     }
   }
 
-  closeReport(id: string, closedReport: any): Observable<any> {
+  closeReport(id: string): Observable<any> {
     const token = this.cookieService.get(this.tokenKey);
     if (token) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${token}`
       });
       const url = `${this.apiUrl}/${id}`;
-      return this.http.put(url, closedReport, { headers });
+      return this.http.put(url, {}, { headers });
     } else {
       return new Observable();
     }

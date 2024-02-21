@@ -28,8 +28,7 @@ export class ReportComponent implements OnInit {
 
   closeReport(id: string): void {
     if (confirm('Tem certeza que deseja fechar este reporte?')) {
-      const closedReport = { status: 1 };
-      this.reportService.closeReport(id, closedReport).subscribe(
+      this.reportService.closeReport(id).subscribe(
         () => {
           this.loadReports();
         },
