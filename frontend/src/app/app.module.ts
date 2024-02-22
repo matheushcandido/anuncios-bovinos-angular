@@ -17,6 +17,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ReportCreateComponent } from './report-create/report-create.component';
 import { ReportComponent } from './report/report.component';
 import { UserComponent } from './user/user.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UserComponent } from './user/user.component';
     UserProfileComponent,
     ReportCreateComponent,
     ReportComponent,
-    UserComponent
+    UserComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,

@@ -1,40 +1,33 @@
-<div class="container-fluid no-padding-left h-100">
-    <div class="row h-100">
-        <app-sidebar class="col-md-3 col-lg-2 d-md-block bg-light sidebar"></app-sidebar>
+<div class="container-fluid" style="padding-left: 0;">
+    <app-header></app-header>
+    <div class="row">
+        <app-sidebar class="col-md-2"></app-sidebar>
 
-        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 h-100">
-            <head>
-                <meta charset="UTF-8">
-                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                <title>Your Angular App</title>
-            </head>
+        <main class="col-md-10" style="padding-top: 70px;">
 
-            <body>
-                <h2>Criar Anúncio</h2>
-                <form (ngSubmit)="onSubmit()" class="announcement-form container mt-5">
+            <h2>Criar Anúncio</h2>
+            <form (ngSubmit)="onSubmit()" class="announcement-form container mt-5">
 
-                    <div class="form-group mb-3">
-                        <label>Qual é o problema deste anúncio?</label><br>
-                        <label><input type="checkbox" [(ngModel)]="report.sold" name="sold"> Vendido</label><br>
-                        <label><input type="checkbox" [(ngModel)]="report.wrongAddress" name="wrongAddress"> Endereço incorreto</label><br>
-                        <label><input type="checkbox" [(ngModel)]="report.wrongPrice" name="wrongPrice"> Preço errado</label><br>
-                        <label><input type="checkbox" [(ngModel)]="report.joke" name="joke"> Brincadeira</label><br>
-                        <label><input type="checkbox" [(ngModel)]="report.wrongCategory" name="wrongCategory"> Categoria errada</label><br>
-                        <label><input type="checkbox" [(ngModel)]="report.duplicated" name="duplicated"> Duplicado</label><br>
-                        <label><input type="checkbox" [(ngModel)]="report.illegal" name="illegal"> Ilegal</label><br>
-                        <label><input type="checkbox" [(ngModel)]="report.fraud" name="fraud"> Fraude</label><br>
-                    </div>
+                <div class="form-group mb-3">
+                    <label>Qual é o problema deste anúncio?</label><br>
+                    <label><input type="checkbox" [(ngModel)]="report.sold" name="sold"> Vendido</label><br>
+                    <label><input type="checkbox" [(ngModel)]="report.wrongAddress" name="wrongAddress"> Endereço incorreto</label><br>
+                    <label><input type="checkbox" [(ngModel)]="report.wrongPrice" name="wrongPrice"> Preço errado</label><br>
+                    <label><input type="checkbox" [(ngModel)]="report.joke" name="joke"> Brincadeira</label><br>
+                    <label><input type="checkbox" [(ngModel)]="report.wrongCategory" name="wrongCategory"> Categoria errada</label><br>
+                    <label><input type="checkbox" [(ngModel)]="report.duplicated" name="duplicated"> Duplicado</label><br>
+                    <label><input type="checkbox" [(ngModel)]="report.illegal" name="illegal"> Ilegal</label><br>
+                    <label><input type="checkbox" [(ngModel)]="report.fraud" name="fraud"> Fraude</label><br>
+                </div>
 
-                    <div class="form-group mb-3">
-                        <label for="note">Observações:</label>
-                        <textarea [(ngModel)]="report.note" name="note" id="note" class="form-control" rows="7" required></textarea>
-                    </div>
+                <div class="form-group mb-3">
+                    <label for="note">Observações:</label>
+                    <textarea [(ngModel)]="report.note" name="note" id="note" class="form-control" rows="7" required></textarea>
+                </div>
 
-                    <br>
-                    <button type="submit" class="btn btn-primary">Enviar</button>
-                </form>
-            </body>
+                <br>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </form>
         </main>
-
     </div>
 </div>

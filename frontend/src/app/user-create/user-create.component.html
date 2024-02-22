@@ -1,0 +1,48 @@
+<div class="container-fluid" style="padding-left: 0;">
+    <app-header></app-header>
+        <div class="row">
+            <app-sidebar class="col-md-2"></app-sidebar>
+        
+            <main class="col-md-10" style="padding-top: 70px;">
+
+                <h2>Criar usuário</h2>
+                <form (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                      <label for="name">Nome:</label>
+                      <input type="text" class="form-control" id="name" [(ngModel)]="user.name" name="name" required>
+                    </div>
+        
+                    <div class="form-group">
+                      <label for="login">Email:</label>
+                      <input type="email" class="form-control" id="login" [(ngModel)]="user.login" name="login" required>
+                    </div>
+        
+                    <div class="form-group">
+                      <label for="password">Senha:</label>
+                      <input type="password" class="form-control" id="password" [(ngModel)]="user.password" name="password" required>
+                    </div>
+        
+                    <div class="form-group">
+                      <label for="confirmPassword">Confirme a Senha:</label>
+                      <input type="password" class="form-control" id="confirmPassword" [(ngModel)]="confirmPassword" name="confirmPassword" required>
+                      <div *ngIf="confirmPassword !== '' && user.password !== confirmPassword" class="text-danger">
+                        As senhas não coincidem.
+                      </div>
+                    </div>
+        
+                    <div class="form-group">
+                      <label for="role">Função:</label>
+                      <select class="form-control" id="role" [(ngModel)]="user.role" name="role" required>
+                        <option value="USER">Usuário</option>
+                        <option value="SELLER">Vendedor</option>
+                        <option value="ADMIN">Admin</option>
+                      </select>
+                    </div>
+        
+                    <div class="form-group mt-2">
+                      <button type="submit" class="btn btn-primary btn-block">Cadastrar</button>
+                    </div>
+                </form>
+            </main>
+    </div>
+</div>

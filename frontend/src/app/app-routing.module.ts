@@ -9,6 +9,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { ReportCreateComponent } from './report-create/report-create.component';
 import { ReportComponent } from './report/report.component';
 import { UserComponent } from './user/user.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 
 const routes: Routes = [
   { path: '', component: AnnouncementComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'reportar', component: ReportCreateComponent, canActivate: [AuthGuard] },
   { path: 'reportes', component: ReportComponent, canActivate: [AuthGuard] },
   { path: 'usuarios', component: UserComponent, canActivate: [AuthGuard] },
+  { path: 'usuarios/criar', component: UserCreateComponent, canActivate: [AuthGuard] },
 ];
 
 @NgModule({

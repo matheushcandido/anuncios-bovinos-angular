@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './user.model';
-import { RegisterService } from './register.service';
+import { User } from '../register/user.model';
+import { UserCreateService } from './user-create.service';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'app-user-create',
+  templateUrl: './user-create.component.html',
+  styleUrl: './user-create.component.css'
 })
-export class RegisterComponent implements OnInit {
+export class UserCreateComponent implements OnInit {
   user: User = {
     id: '',
     name: '',
@@ -19,7 +19,7 @@ export class RegisterComponent implements OnInit {
 
   confirmPassword: string = '';
 
-  constructor(private registerService: RegisterService) {}
+  constructor(private userCreateService: UserCreateService) {}
 
   checkPasswordMatch() {
     return this.user.password === this.confirmPassword || this.confirmPassword === '';
@@ -34,7 +34,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.registerService.register(this.user).subscribe(
+    this.userCreateService.createUser(this.user).subscribe(
       (response) => {
         console.log('Usuário registrado com sucesso:', response);
       },
