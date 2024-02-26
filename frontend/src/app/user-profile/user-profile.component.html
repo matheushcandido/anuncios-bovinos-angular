@@ -1,12 +1,52 @@
-<div class="container mt-4">
-    <h2>Perfil do Usuário</h2>
-    <div *ngIf="user">
-      <!-- <p><strong>Nome:</strong> {{ user.name }}</p> -->
-      <p><strong>Login:</strong> {{ user.login }}</p>
-      <p><strong>Role:</strong> {{ user.role }}</p>
-    </div>
-    <div *ngIf="!user">
-      <p>Nenhum usuário logado.</p>
-    </div>
+<div class="container-fluid" style="padding-left: 0;">
+  <app-header></app-header>
+
+  <div class="row">
+    <app-sidebar class="col-md-2"></app-sidebar>
+
+    <main class="col-md-10" style="padding-top: 70px;">
+      <div class="container mt-4">
+        <!-- Abas -->
+        <ul class="nav nav-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#dados-basicos">Dados Básicos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#endereco">Endereço</a>
+          </li>
+        </ul>
+
+        <!-- Conteúdo das abas -->
+        <div class="tab-content mt-3">
+          <!-- Aba Dados Básicos -->
+          <div class="tab-pane fade show active" id="dados-basicos">
+            <h2>Dados Básicos</h2>
+            <div>
+              <div class="form-group">
+                <label for="login">Email:</label>
+                <input type="text" class="form-control" id="login" [(ngModel)]="user.login" name="login">
+              </div>
+              <div class="form-group">
+                <label for="name">Nome:</label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="user.name" name="name">
+              </div>
+              <div class="form-group">
+                <label for="role">Função:</label>
+                <select class="form-control" id="role" [(ngModel)]="user.role" name="role" disabled>
+                  <option value="USER">Usuário</option>
+                  <option value="SELLER">Vendedor</option>
+                  <option value="ADMIN">Admin</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <!-- Aba Endereço -->
+          <div class="tab-pane fade" id="endereco">
+            <h2>Endereço</h2>
+            <!-- Coloque os campos do endereço aqui -->
+          </div>
+        </div>
+      </div>
+    </main>
   </div>
-  
+</div>
