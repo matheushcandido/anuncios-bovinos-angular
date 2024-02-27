@@ -23,4 +23,30 @@ export class UserProfileService {
       return new Observable();
     }
   }
+
+  deleteUser(id: string): Observable<any> {
+    const token = this.cookieService.get(this.tokenKey);
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+    const url = `${this.baseUrl}/${id}`;
+    return this.http.delete(url, { headers });
+    } else {
+      return new Observable();
+    }
+  }
+
+  saveUser(id: string, userData: any): Observable<any> {
+    const token = this.cookieService.get(this.tokenKey);
+    if (token) {
+      const headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      });
+      const url = `${this.baseUrl}/${id}`;
+      return this.http.put(url, userData, { headers });
+    } else {
+      return new Observable();
+    }
+  }
 }
