@@ -4,5 +4,5 @@ export interface User {
     login: string;
     password: string;
     role: string;
-    status: number;
+    status: string;
 }  

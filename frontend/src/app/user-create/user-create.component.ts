@@ -14,7 +14,7 @@ export class UserCreateComponent implements OnInit {
     login: '',
     password: '',
     role: 'USER',
-    status: 0
+    status: 'ACTIVE'
   };
 
   confirmPassword: string = '';

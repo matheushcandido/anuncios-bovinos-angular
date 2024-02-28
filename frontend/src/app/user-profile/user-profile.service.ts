@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
+import { User } from '../register/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -37,16 +38,16 @@ export class UserProfileService {
     }
   }
 
-  saveUser(id: string, userData: any): Observable<any> {
+  updateUser(user: User): Observable<any> {
     const token = this.cookieService.get(this.tokenKey);
     if (token) {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${token}`
       });
-      const url = `${this.baseUrl}/${id}`;
-      return this.http.put(url, userData, { headers });
+      const url = `${this.baseUrl}/${user.id}`;
+      return this.http.put(url, user, { headers });
     } else {
       return new Observable();
     }
-  }
+  }  
 }

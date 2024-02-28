@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from './user-profile.service';
 import { Router } from '@angular/router';
+import { User } from '../register/user.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -8,7 +9,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
-  user: any = {};
+  user: User = {
+    id: '',
+    name: '',
+    login: '',
+    password: '',
+    role: '',
+    status: 'ACTIVE'
+  };
+
   activeTab: string = 'dados-basicos';
 
   constructor(private userProfileService: UserProfileService, private router: Router) { }
@@ -41,13 +50,15 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  saveUser(): void {
-    this.userProfileService.saveUser(this.user.id, this.user).subscribe(
-      () => {
-        console.log('Usuário atualizado com sucesso!');
+  updateUser(): void {
+    console.log(this.user);
+    this.userProfileService.updateUser(this.user).subscribe(
+      (updatedUser) => {
+        // Atualização bem-sucedida
+        console.log('Dados do usuário atualizados:', updatedUser);
       },
       (error) => {
-        console.error('Erro ao atualizar usuário:', error);
+        console.error('Erro ao atualizar dados do usuário:', error);
       }
     );
   }
