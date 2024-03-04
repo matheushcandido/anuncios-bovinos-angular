@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from './user-profile.service';
 import { Router } from '@angular/router';
 import { User } from '../register/user.model';
+import { Address } from '../models/address.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,6 +17,17 @@ export class UserProfileComponent implements OnInit {
     password: '',
     role: '',
     status: 'ACTIVE'
+  };
+
+  address: Address = {
+    id: '',
+    zip: '',
+    street: '',
+    neighborhood: '',
+    number: '',
+    city: '',
+    state: '',
+    idUser: this.user.id
   };
 
   activeTab: string = 'dados-basicos';
@@ -54,11 +66,22 @@ export class UserProfileComponent implements OnInit {
     console.log(this.user);
     this.userProfileService.updateUser(this.user).subscribe(
       (updatedUser) => {
-        // Atualização bem-sucedida
         console.log('Dados do usuário atualizados:', updatedUser);
       },
       (error) => {
         console.error('Erro ao atualizar dados do usuário:', error);
+      }
+    );
+  }
+
+  getAddressByCEP(cep: string): void {
+    this.userProfileService.getAddressByCEP(cep).subscribe(
+      (data) => {
+        this.address = data;
+        console.log('Endereço obtido com sucesso:', this.address);
+      },
+      (error) => {
+        console.error('Erro ao obter endereço pelo CEP:', error);
       }
     );
   }

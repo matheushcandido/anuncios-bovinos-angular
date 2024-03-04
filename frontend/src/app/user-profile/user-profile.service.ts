@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 import { User } from '../register/user.model';
 
@@ -49,5 +49,10 @@ export class UserProfileService {
     } else {
       return new Observable();
     }
-  }  
+  }
+  
+  getAddressByCEP(cep: string): Observable<any> {
+    const url = `https://viacep.com.br/ws/${cep}/json/`;
+    return this.http.get(url);
+  }
 }
