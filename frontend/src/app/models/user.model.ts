@@ -1,3 +1,5 @@
+import { Address } from "./address.model";
+
 export interface User {
     id: string;
     name: string;
@@ -5,4 +7,5 @@ export interface User {
     password: string;
     role: string;
     status: string;
+    address: Address;
 }  

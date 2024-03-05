@@ -6,5 +6,5 @@ export interface Address {
     number: string;
     city: string;
     state: string;
-    idUser: string;
+    user_id: string;
 }  

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfileService } from './user-profile.service';
 import { Router } from '@angular/router';
-import { User } from '../register/user.model';
+import { User } from '../models/user.model';
 import { Address } from '../models/address.model';
+import { States } from '../models/states';
 
 @Component({
   selector: 'app-user-profile',
@@ -16,7 +17,17 @@ export class UserProfileComponent implements OnInit {
     login: '',
     password: '',
     role: '',
-    status: 'ACTIVE'
+    status: 'ACTIVE',
+    address: {
+      id: '',
+      zip: '',
+      street: '',
+      neighborhood: '',
+      number: '',
+      city: '',
+      state: '',
+      user_id: ''
+    }
   };
 
   address: Address = {
@@ -27,9 +38,10 @@ export class UserProfileComponent implements OnInit {
     number: '',
     city: '',
     state: '',
-    idUser: this.user.id
+    user_id: ''
   };
 
+  states = States;
   activeTab: string = 'dados-basicos';
 
   constructor(private userProfileService: UserProfileService, private router: Router) { }
@@ -42,12 +54,15 @@ export class UserProfileComponent implements OnInit {
     this.userProfileService.getCurrentUser().subscribe(
       (userData) => {
         this.user = userData;
+        if (userData.address) {
+          this.address = userData.address;
+        }
       },
       (error) => {
         console.error('Erro ao obter dados do usuário:', error);
       }
     );
-  }
+  }   
 
   deleteUser(id: string): void {
     if (confirm('Tem certeza que deseja deletar seu usuário?')) {
@@ -63,7 +78,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   updateUser(): void {
-    console.log(this.user);
+
     this.userProfileService.updateUser(this.user).subscribe(
       (updatedUser) => {
         console.log('Dados do usuário atualizados:', updatedUser);
@@ -77,12 +92,16 @@ export class UserProfileComponent implements OnInit {
   getAddressByCEP(cep: string): void {
     this.userProfileService.getAddressByCEP(cep).subscribe(
       (data) => {
-        this.address = data;
+        this.address.street = data.logradouro;
+        this.address.neighborhood = data.bairro;
+        this.address.city = data.localidade;
+        this.address.state = data.uf;
+        
         console.log('Endereço obtido com sucesso:', this.address);
       },
       (error) => {
         console.error('Erro ao obter endereço pelo CEP:', error);
       }
     );
-  }
+  }  
 }

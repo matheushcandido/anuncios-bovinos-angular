@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from '../register/user.model';
+import { User } from '../models/user.model';
 import { UserCreateService } from './user-create.service';
 
 @Component({
@@ -14,7 +14,17 @@ export class UserCreateComponent implements OnInit {
     login: '',
     password: '',
     role: 'USER',
-    status: 'ACTIVE'
+    status: 'ACTIVE',
+    address: {
+      id: '',
+      zip: '',
+      street: '',
+      neighborhood: '',
+      number: '',
+      city: '',
+      state: '',
+      user_id: ''
+    }
   };
 
   confirmPassword: string = '';

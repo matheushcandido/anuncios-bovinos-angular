@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
-import { User } from '../register/user.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +10,7 @@ import { User } from '../register/user.model';
 export class UserProfileService {
   private baseUrl = 'http://localhost:8080/users';
   private tokenKey = 'auth-api';
+  private proxyUrl = 'http://localhost:4200/apiviacep';
 
   constructor(private http: HttpClient, private cookieService: CookieService) { }
 
@@ -52,7 +53,7 @@ export class UserProfileService {
   }
   
   getAddressByCEP(cep: string): Observable<any> {
-    const url = `https://viacep.com.br/ws/${cep}/json/`;
+    const url = `${this.proxyUrl}/ws/${cep}/json/`;
     return this.http.get(url);
   }
 }
