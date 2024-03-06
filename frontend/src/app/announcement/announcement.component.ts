@@ -10,6 +10,8 @@ import { AnnouncementService } from './announcement.service';
 export class AnnouncementComponent implements OnInit {
   announcements: any[] = [];
   editingId: number | null = null;
+  pageSize = 10;
+  p = 1;
 
   constructor(private announcementService: AnnouncementService, private router: Router) {}
 
