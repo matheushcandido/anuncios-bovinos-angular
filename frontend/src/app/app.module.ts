@@ -19,6 +19,7 @@ import { ReportCreateComponent } from './report-create/report-create.component';
 import { ReportComponent } from './report/report.component';
 import { UserComponent } from './user/user.component';
 import { UserCreateComponent } from './user-create/user-create.component';
+import { AnnouncementViewComponent } from './announcement-view/announcement-view.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserCreateComponent } from './user-create/user-create.component';
     ReportCreateComponent,
     ReportComponent,
     UserComponent,
-    UserCreateComponent
+    UserCreateComponent,
+    AnnouncementViewComponent
   ],
   imports: [
     BrowserModule,

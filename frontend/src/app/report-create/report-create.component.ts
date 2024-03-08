@@ -21,7 +21,7 @@ export class ReportCreateComponent implements OnInit{
     illegal: false,
     fraud: false,
     note: '',
-    status: 0
+    status: 'ACTIVE'
   };
 
   constructor(private reportCreateService: ReportCreateService, private route: ActivatedRoute) {}

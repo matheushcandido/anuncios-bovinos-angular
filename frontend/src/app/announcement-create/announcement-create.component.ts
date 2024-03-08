@@ -64,7 +64,7 @@ export class AnnouncementCreateComponent implements OnInit {
       (response) => {
         const operationType = this.isEditing ? 'atualizado' : 'criado';
         console.log(`Anúncio ${operationType} com sucesso:`, response);
-        this.router.navigate(['/anuncios']);
+        this.router.navigate(['/']);
       },
       (error) => {
         const operationType = this.isEditing ? 'atualizar' : 'criar';

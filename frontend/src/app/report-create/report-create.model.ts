@@ -10,5 +10,5 @@ export interface Report {
     illegal: boolean;
     fraud: boolean;
     note: string;
-    status: number;
+    status: string;
 }
