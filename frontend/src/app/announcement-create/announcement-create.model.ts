@@ -9,4 +9,5 @@ export interface Announcement {
     idBreedPaternal: string;
     idBreedMaternal: string;
     note: string;
+    image?: File;
   }  

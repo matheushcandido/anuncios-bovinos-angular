@@ -6,7 +6,7 @@
             <main class="col-md-10" style="padding-top: 70px;">
 
                 <h2>{{ isEditing ? 'Editar Anúncio' : 'Criar Anúncio' }}</h2>
-                <form (ngSubmit)="onSubmit()" class="announcement-form container mt-5">
+                <form (ngSubmit)="onSubmit()" class="announcement-form container mt-5" enctype="multipart/form-data">
 
                     <div class="form-group mb-3">
                         <label for="name">Título do anúncio:</label>
@@ -47,6 +47,11 @@
                         <label for="idBreedMaternal">Raça maternal:</label>
                         <input [(ngModel)]="announcement.idBreedMaternal" name="idBreedMaternal" id="idBreedMaternal" class="form-control" required>
                     </div>
+
+                    <div class="form-group mb-3">
+                        <label for="imageFile">Imagem:</label>
+                        <input type="file" (change)="handleFileInput($event)" class="form-control" id="imageFile">
+                    </div>                    
 
                     <div class="form-group mb-3">
                         <label for="note">Observações:</label>

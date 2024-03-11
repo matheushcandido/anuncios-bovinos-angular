@@ -35,6 +35,17 @@ export class AnnouncementCreateComponent implements OnInit {
     this.checkEditingMode();
   }
 
+  selectedImage: File | null = null;
+
+  handleFileInput(event: any): void {
+      const files = event.target.files;
+      if (files && files.length > 0) {
+          this.selectedImage = files[0];
+      } else {
+          this.selectedImage = null;
+      }
+  }  
+
   checkEditingMode(): void {
     const editId = this.route.snapshot.queryParams['editId'];
     if (editId) {
@@ -56,20 +67,26 @@ export class AnnouncementCreateComponent implements OnInit {
   }
 
   onSubmit() {
+    const formData = new FormData();
+    formData.append('announcement', JSON.stringify(this.announcement));
+    if (this.selectedImage) {
+      formData.append('imageFile', this.selectedImage);
+  }
+
     const operation = this.isEditing
-      ? this.announcementService.updateAnnouncement(this.announcement)
-      : this.announcementService.createAnnouncement(this.announcement);
+        ? this.announcementService.updateAnnouncement(formData)
+        : this.announcementService.createAnnouncement(formData);
 
     operation.subscribe(
-      (response) => {
-        const operationType = this.isEditing ? 'atualizado' : 'criado';
-        console.log(`Anúncio ${operationType} com sucesso:`, response);
-        this.router.navigate(['/']);
-      },
-      (error) => {
-        const operationType = this.isEditing ? 'atualizar' : 'criar';
-        console.error(`Erro ao ${operationType} anúncio:`, error);
-      }
+        (response) => {
+            const operationType = this.isEditing ? 'atualizado' : 'criado';
+            console.log(`Anúncio ${operationType} com sucesso:`, response);
+            this.router.navigate(['/']);
+        },
+        (error) => {
+            const operationType = this.isEditing ? 'atualizar' : 'criar';
+            console.error(`Erro ao ${operationType} anúncio:`, error);
+        }
     );
   }
 }

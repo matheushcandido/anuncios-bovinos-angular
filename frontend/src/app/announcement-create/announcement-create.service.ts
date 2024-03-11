@@ -13,15 +13,15 @@ export class AnnouncementCreateService {
 
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
-  createAnnouncement(announcement: Announcement): Observable<any> {
+  createAnnouncement(formData: FormData): Observable<any> {
     const token = this.cookieService.get(this.tokenKey);
     if (token) {
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-      });
-      return this.http.post(this.apiUrl, announcement, { headers });
+        const headers = new HttpHeaders({
+            'Authorization': `Bearer ${token}`
+        });
+        return this.http.post(this.apiUrl, formData, { headers });
     } else {
-      return new Observable();
+        return new Observable();
     }
   }
 
@@ -38,16 +38,16 @@ export class AnnouncementCreateService {
     }
   }
 
-  updateAnnouncement(announcement: Announcement): Observable<any> {
+  updateAnnouncement(formData: FormData): Observable<any> {
     const token = this.cookieService.get(this.tokenKey);
     if (token) {
-      const headers = new HttpHeaders({
-        'Authorization': `Bearer ${token}`
-      });
-      const url = `${this.apiUrl}/${announcement.id}`;
-      return this.http.put(url, announcement, { headers });
+        const headers = new HttpHeaders({
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'multipart/form-data'
+        });
+        return this.http.put(this.apiUrl, formData, { headers });
     } else {
-      return new Observable();
+        return new Observable();
     }
-  }  
+  }
 }
