@@ -12,17 +12,17 @@
               <h5 class="card-title">{{ announcement.name }}</h5>
               <p class="card-text">Raça: {{ announcement.idBreed }}, Preço: {{ announcement.price }}, Nascimento: {{ announcement.birth | date: 'dd/MM/yyyy'}}</p>
               <div class="d-flex justify-content-between align-items-center">
-                <p class="mb-0">Usuário: {{ announcement.user.name }}</p>
+                <p class="mb-0">Usuário: {{ announcement.user?.name }}</p>
                 <div>
-                  <p class="mb-0">{{ announcement.user.address.city }}, {{ announcement.user.address.state }}</p>
+                  <p class="mb-0">{{ announcement.user?.address?.city }}, {{ announcement.user?.address?.state }}</p>
                 </div>
                 <div class="dropdown">
                   <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                   </button>
                   <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><button (click)="reportAnnouncement(announcement.id)" class="dropdown-item" type="button">Reportar Anúncio</button></li>
                     <li><button (click)="editAnnouncement(announcement.id)" class="dropdown-item" type="button">Editar</button></li>
                     <li><button (click)="deleteAnnouncement(announcement.id)" class="dropdown-item" type="button">Deletar</button></li>
-                    <li><button (click)="reportAnnouncement(announcement.id)" class="dropdown-item" type="button">Reportar Anúncio</button></li>
                   </ul>
                 </div>
               </div>

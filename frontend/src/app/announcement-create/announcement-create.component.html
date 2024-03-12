@@ -46,11 +46,11 @@
                     <div class="form-group mb-3">
                         <label for="idBreedMaternal">Raça maternal:</label>
                         <input [(ngModel)]="announcement.idBreedMaternal" name="idBreedMaternal" id="idBreedMaternal" class="form-control" required>
-                    </div>
+                    </div>                 
 
                     <div class="form-group mb-3">
-                        <label for="imageFile">Imagem:</label>
-                        <input type="file" (change)="handleFileInput($event)" class="form-control" id="imageFile">
+                        <label for="file">Imagem:</label>
+                        <input type="file" name="file" id="file" class="form-control" (change)="onFileSelected($event)" required>
                     </div>                    
 
                     <div class="form-group mb-3">
