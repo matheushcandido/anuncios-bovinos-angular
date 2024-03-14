@@ -71,7 +71,7 @@ export class AnnouncementCreateComponent implements OnInit {
         const operationType = this.isEditing ? 'atualizado' : 'criado';
         console.log(`Anúncio ${operationType} com sucesso:`, response);
 
-        this.announcementService.uploadImage(this.file, response.id);
+        this.uploadImage(response.id);
 
         this.router.navigate(['/']);
       },
@@ -81,4 +81,16 @@ export class AnnouncementCreateComponent implements OnInit {
       }
     );
   }
+
+  uploadImage(announcementId: string){
+    this.announcementService.uploadImage(this.file, announcementId).subscribe(
+      (response) => {
+        console.log('Imagem registrada com sucesso:', response);
+      },
+      (error) => {
+        console.error('Erro ao registrar imagem:', error);
+      }
+    );
+  }
+  
 }
