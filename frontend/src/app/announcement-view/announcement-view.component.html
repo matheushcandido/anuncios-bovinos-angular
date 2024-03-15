@@ -1,11 +1,47 @@
 <div class="container-fluid" style="padding-left: 0;">
     <app-header></app-header>
-        <div class="row">
-            <app-sidebar class="col-md-2"></app-sidebar>
-        
-            <main class="col-md-10" style="padding-top: 70px;">
+    <div class="row">
+        <app-sidebar class="col-md-2"></app-sidebar>
 
+        <main class="col-md-10" style="padding-top: 70px;">
+            <div class="container">
+                <h2>{{ announcement?.name }}</h2>
+                
+                <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div *ngFor="let image of announcement.images; let i = index" class="carousel-item" [class.active]="i === 0">
+                            <img class="d-block w-100" src="../../../uploads/5e799736-81a7-4053-83be-029bf75de085.jpg" alt="Slide {{ i }}">
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>                 -->
+                <img src="../../../uploads/5e799736-81a7-4053-83be-029bf75de085.jpg">
 
-            </main>
+                <div>
+                    <h4>Características:</h4>
+                    <ul>
+                        <li>Preço: {{ announcement?.price }}</li>
+                        <li>Nascimento: {{ announcement?.birth }}</li>
+                        <li>RGA: {{ announcement?.rga }}</li>
+                        <li>Código: {{ announcement?.code }}</li>
+                        <li>Raça: {{ announcement?.idBreed }}</li>
+                        <li>Raça do Pai: {{ announcement?.idBreedPaternal }}</li>
+                        <li>Raça da Mãe: {{ announcement?.idBreedMaternal }}</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4>Observações:</h4>
+                    <p>{{ announcement?.note }}</p>
+                </div>
+            </div>
+        </main>
     </div>
 </div>

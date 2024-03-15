@@ -10,18 +10,20 @@ import { ReportCreateComponent } from './report-create/report-create.component';
 import { ReportComponent } from './report/report.component';
 import { UserComponent } from './user/user.component';
 import { UserCreateComponent } from './user-create/user-create.component';
+import { AnnouncementViewComponent } from './announcement-view/announcement-view.component';
 
 const routes: Routes = [
   { path: '', component: AnnouncementComponent },
   { path: 'anuncios/criar', component: AnnouncementCreateComponent, canActivate: [AuthGuard] },
   { path: 'anuncios/editar', component: AnnouncementCreateComponent, canActivate: [AuthGuard] },
+  { path: 'anuncios/visualizar/:id', component: AnnouncementViewComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
   { path: 'registrar', component: RegisterComponent },
   { path: 'perfil', component: UserProfileComponent, canActivate: [AuthGuard] },
   { path: 'reportar', component: ReportCreateComponent, canActivate: [AuthGuard] },
   { path: 'reportes', component: ReportComponent, canActivate: [AuthGuard] },
   { path: 'usuarios', component: UserComponent, canActivate: [AuthGuard] },
-  { path: 'usuarios/criar', component: UserCreateComponent, canActivate: [AuthGuard] },
+  { path: 'usuarios/criar', component: UserCreateComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({

@@ -9,7 +9,9 @@
         <div *ngFor="let announcement of announcements | paginate: { itemsPerPage: pageSize, currentPage: p }" class="mb-4">
           <div class="card">
             <div class="card-body">
-              <h5 class="card-title">{{ announcement.name }}</h5>
+              <h5 class="card-title">
+                <a [routerLink]="['/anuncios/visualizar', announcement.id]">{{ announcement.name }}</a>
+              </h5>
               <p class="card-text">Raça: {{ announcement.idBreed }}, Preço: {{ announcement.price }}, Nascimento: {{ announcement.birth | date: 'dd/MM/yyyy'}}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <p class="mb-0">Usuário: {{ announcement.user?.name }}</p>
