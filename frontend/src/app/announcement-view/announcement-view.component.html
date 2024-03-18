@@ -7,10 +7,10 @@
             <div class="container">
                 <h2>{{ announcement?.name }}</h2>
                 
-                <!-- <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
-                        <div *ngFor="let image of announcement.images; let i = index" class="carousel-item" [class.active]="i === 0">
-                            <img class="d-block w-100" src="../../../uploads/5e799736-81a7-4053-83be-029bf75de085.jpg" alt="Slide {{ i }}">
+                        <div *ngFor="let image of announcement?.images; let i = index" class="carousel-item" [class.active]="i === 0">
+                            <img class="d-block img-fluid" [src]="'/assets/uploads/' + image.id" alt="Slide {{ i }}">
                         </div>
                     </div>
                     <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -21,8 +21,7 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="sr-only">Next</span>
                     </a>
-                </div>                 -->
-                <img src="../../../uploads/5e799736-81a7-4053-83be-029bf75de085.jpg">
+                </div>                                
 
                 <div>
                     <h4>Características:</h4>
