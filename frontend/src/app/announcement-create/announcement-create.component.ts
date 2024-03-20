@@ -22,7 +22,7 @@ export class AnnouncementCreateComponent implements OnInit {
     note: '',
   };
 
-  file!: File;
+  files: File[] = [];
 
   isEditing = false;
   editingId: string | null = null;
@@ -38,7 +38,13 @@ export class AnnouncementCreateComponent implements OnInit {
   }
 
   onFileSelected(event: any) {
-    this.file = event.target.files[0];
+    // Limpa o array de arquivos
+    this.files = [];
+
+    // Obtém os arquivos selecionados e os armazena no array
+    for (let i = 0; i < event.target.files.length; i++) {
+        this.files.push(event.target.files[i]);
+    }
 }
 
   checkEditingMode(): void {
@@ -82,15 +88,16 @@ export class AnnouncementCreateComponent implements OnInit {
     );
   }
 
-  uploadImage(announcementId: string){
-    this.announcementService.uploadImage(this.file, announcementId).subscribe(
-      (response) => {
-        console.log('Imagem registrada com sucesso:', response);
-      },
-      (error) => {
-        console.error('Erro ao registrar imagem:', error);
-      }
-    );
+  uploadImage(announcementId: string) {
+    this.files.forEach(file => {
+        this.announcementService.uploadImage(file, announcementId).subscribe(
+            (response) => {
+                console.log('Imagem registrada com sucesso:', response);
+            },
+            (error) => {
+                console.error('Erro ao registrar imagem:', error);
+            }
+        );
+    });
   }
-  
 }
