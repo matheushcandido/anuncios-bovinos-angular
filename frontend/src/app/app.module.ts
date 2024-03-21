@@ -20,6 +20,7 @@ import { ReportComponent } from './report/report.component';
 import { UserComponent } from './user/user.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { AnnouncementViewComponent } from './announcement-view/announcement-view.component';
+import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,8 @@ import { AnnouncementViewComponent } from './announcement-view/announcement-view
   imports: [
     BrowserModule,
     HttpClientModule,
+    NgbModule,
+    NgbCarouselModule,
     FormsModule,
     AppRoutingModule,
     MatIconModule,

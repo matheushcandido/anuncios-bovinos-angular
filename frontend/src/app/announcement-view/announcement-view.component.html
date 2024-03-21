@@ -6,22 +6,30 @@
         <main class="col-md-10" style="padding-top: 70px;">
             <div class="container">
                 <h2>{{ announcement?.name }}</h2>
+                <div *ngIf="!announcement">Carregando...</div>
                 
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <div id="carouselExampleIndicators" class="carousel slide">
+                    <ol class="carousel-indicators">
+                        <li *ngFor="let image of announcement?.images; let i = index" [class.active]="i === selectedIndex" (click)="selectSlide(i)"></li>
+                    </ol>
                     <div class="carousel-inner">
-                        <div *ngFor="let image of announcement?.images; let i = index" class="carousel-item" [class.active]="i === 0">
-                            <img class="d-block img-fluid" [src]="'/assets/uploads/' + image.id" alt="Slide {{ i }}">
+                        <div *ngFor="let image of announcement?.images; let i = index" class="carousel-item" [class.active]="i === selectedIndex">
+                            <img [src]="'/assets/uploads/' + image.id" alt="Slide" class="d-block w-100">
                         </div>
                     </div>
-                    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <button class="carousel-control-prev" (click)="prevSlide()">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                        <span class="sr-only">Anterior</span>
+                    </button>
+                    <button class="carousel-control-next" (click)="nextSlide()">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
-                </div>                                
+                        <span class="sr-only">Próximo</span>
+                    </button>
+                </div>                
+            
+                <div *ngIf="announcement?.images && announcement.images.length === 0">
+                    <p>Nenhuma imagem disponível.</p>
+                </div>                           
 
                 <div>
                     <h4>Características:</h4>

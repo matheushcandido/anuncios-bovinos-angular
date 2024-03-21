@@ -9,6 +9,7 @@ import { AnnouncementViewService } from './announcement-view.service';
 })
 export class AnnouncementViewComponent implements OnInit {
   announcement: any;
+  selectedIndex = 0;
   
   constructor(
     private route: ActivatedRoute,
@@ -26,11 +27,22 @@ export class AnnouncementViewComponent implements OnInit {
     this.announcementViewService.getAnnouncement(announcementId).subscribe(
       (data) => {
         this.announcement = data;
-        console.log(data);
       },
       (error) => {
         console.error('Erro ao carregar anúncio', error);
       }
     );
+  }
+
+  selectSlide(index: number): void {
+    this.selectedIndex = index;
+  }
+
+  prevSlide(): void {
+    this.selectedIndex = (this.selectedIndex === 0) ? this.announcement?.images.length - 1 : this.selectedIndex - 1;
+  }
+
+  nextSlide(): void {
+    this.selectedIndex = (this.selectedIndex === this.announcement?.images.length - 1) ? 0 : this.selectedIndex + 1;
   }
 }
