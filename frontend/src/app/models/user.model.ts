@@ -1,4 +1,5 @@
 import { Address } from "./address.model";
+import { Contact } from "./contact.model";
 
 export interface User {
     id: string;
@@ -8,4 +9,5 @@ export interface User {
     role: string;
     status: string;
     address: Address;
+    contact: Contact;
 }  

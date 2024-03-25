@@ -24,6 +24,12 @@ export class RegisterComponent implements OnInit {
       city: '',
       state: '',
       user_id: ''
+    },
+    contact: {
+      id: '',
+      phoneNumber: '',
+      verified: false,
+      user_id: ''
     }
   };
 

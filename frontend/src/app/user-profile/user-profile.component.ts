@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { User } from '../models/user.model';
 import { Address } from '../models/address.model';
 import { States } from '../models/states';
+import { Contact } from '../models/contact.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -11,6 +12,7 @@ import { States } from '../models/states';
   styleUrls: ['./user-profile.component.css']
 })
 export class UserProfileComponent implements OnInit {
+
   user: User = {
     id: '',
     name: '',
@@ -27,6 +29,12 @@ export class UserProfileComponent implements OnInit {
       city: '',
       state: '',
       user_id: ''
+    },
+    contact: {
+      id: '',
+      phoneNumber: '',
+      verified: false,
+      user_id: ''
     }
   };
 
@@ -38,6 +46,13 @@ export class UserProfileComponent implements OnInit {
     number: '',
     city: '',
     state: '',
+    user_id: ''
+  };
+
+  contact: Contact = {
+    id: '',
+    phoneNumber: '',
+    verified: false,
     user_id: ''
   };
 
@@ -56,6 +71,9 @@ export class UserProfileComponent implements OnInit {
         this.user = userData;
         if (userData.address) {
           this.address = userData.address;
+        }
+        if (userData.contact) {
+          this.contact = userData.contact;
         }
       },
       (error) => {
@@ -79,6 +97,8 @@ export class UserProfileComponent implements OnInit {
 
   updateUser(): void {
 
+    this.user.contact = this.contact;
+    console.log(this.user)
     this.userProfileService.updateUser(this.user).subscribe(
       (updatedUser) => {
         console.log('Dados do usuário atualizados:', updatedUser);
