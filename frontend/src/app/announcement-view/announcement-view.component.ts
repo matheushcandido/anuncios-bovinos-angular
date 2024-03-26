@@ -46,8 +46,7 @@ export class AnnouncementViewComponent implements OnInit {
     this.selectedIndex = (this.selectedIndex === this.announcement?.images.length - 1) ? 0 : this.selectedIndex + 1;
   }
 
-  openWhatsApp() {
-    const phoneNumber = '5511999999999';
+  openWhatsApp(phoneNumber: string) {
     const message = 'Olá, gostaria de obter mais informações sobre o anúncio.';
     const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');

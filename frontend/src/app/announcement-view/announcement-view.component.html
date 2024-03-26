@@ -50,7 +50,8 @@
                 </div>
 
                 <div style="text-align: right;">
-                    <button (click)="openWhatsApp()">Enviar mensagem no WhatsApp</button>
+                    <span>Envie uma mensagem para o dono do anúncio!</span>
+                    <img type="button" width="100" height="100" src="/assets/b357a82495676c6c808a7b8c818f5460-removebg-preview.png" alt="Enviar mensagem no WhatsApp" (click)="openWhatsApp(announcement?.user?.contact?.phoneNumber)">
                 </div>
             </div>
         </main>
