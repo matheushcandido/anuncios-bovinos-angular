@@ -102,6 +102,7 @@ export class UserProfileComponent implements OnInit {
     this.userProfileService.updateUser(this.user).subscribe(
       (updatedUser) => {
         console.log('Dados do usuário atualizados:', updatedUser);
+        this.router.navigate(['/']);
       },
       (error) => {
         console.error('Erro ao atualizar dados do usuário:', error);

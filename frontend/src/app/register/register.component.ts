@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { RegisterService } from './register.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit {
 
   confirmPassword: string = '';
 
-  constructor(private registerService: RegisterService) {}
+  constructor(private registerService: RegisterService, private router: Router) {}
 
   checkPasswordMatch() {
     return this.user.password === this.confirmPassword || this.confirmPassword === '';
@@ -53,6 +54,7 @@ export class RegisterComponent implements OnInit {
     this.registerService.register(this.user).subscribe(
       (response) => {
         console.log('Usuário registrado com sucesso:', response);
+        this.router.navigate(['/']);
       },
       (error) => {
         console.error('Erro ao registrar usuário:', error);

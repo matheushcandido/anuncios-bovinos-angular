@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/user.model';
 import { UserCreateService } from './user-create.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-create',
@@ -35,7 +36,7 @@ export class UserCreateComponent implements OnInit {
 
   confirmPassword: string = '';
 
-  constructor(private userCreateService: UserCreateService) {}
+  constructor(private userCreateService: UserCreateService, private router: Router) {}
 
   checkPasswordMatch() {
     return this.user.password === this.confirmPassword || this.confirmPassword === '';
@@ -53,6 +54,7 @@ export class UserCreateComponent implements OnInit {
     this.userCreateService.createUser(this.user).subscribe(
       (response) => {
         console.log('Usuário registrado com sucesso:', response);
+        this.router.navigate(['/']);
       },
       (error) => {
         console.error('Erro ao registrar usuário:', error);
