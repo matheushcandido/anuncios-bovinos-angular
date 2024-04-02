@@ -1,0 +1,22 @@
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mt-5">
+          <div class="card-header">
+            <h2>Verificar celular</h2>
+          </div>
+          <div class="card-body">
+            <form>
+              <div class="form-group">
+                <label for="code">Código recebido:</label>
+                <input type="text" id="code" class="form-control" [(ngModel)]="code" name="code" required>
+              </div>
+              <div class="form-group mt-2">
+                <button type="button" class="btn btn-primary btn-block" (click)="verify()">Verificar</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>  

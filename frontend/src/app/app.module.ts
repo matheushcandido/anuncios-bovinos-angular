@@ -21,6 +21,8 @@ import { UserComponent } from './user/user.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { AnnouncementViewComponent } from './announcement-view/announcement-view.component';
 import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxMaskDirective } from 'ngx-mask';
+import { VerifyPhoneComponent } from './verify-phone/verify-phone.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,8 @@ import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     ReportComponent,
     UserComponent,
     UserCreateComponent,
-    AnnouncementViewComponent
+    AnnouncementViewComponent,
+    VerifyPhoneComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,8 @@ import { NgbCarouselModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
     FormsModule,
     AppRoutingModule,
     MatIconModule,
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgxMaskDirective
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

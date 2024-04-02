@@ -36,6 +36,10 @@
               <div class="form-group">
                 <label for="phoneNumber">Telefone:</label>
                 <input type="text" class="form-control" id="phoneNumber" [(ngModel)]="contact.phoneNumber" name="phoneNumber">
+                <div class="form-check">
+                  <input type="checkbox" class="form-check-input" id="verified" [(ngModel)]="contact.verified" name="verified" disabled>
+                  <label class="form-check-label" for="verified">Verificado</label>
+                </div>
               </div>
               <div class="form-group">
                 <label for="role">Função:</label>
