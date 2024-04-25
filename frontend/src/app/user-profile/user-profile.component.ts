@@ -5,6 +5,7 @@ import { User } from '../models/user.model';
 import { Address } from '../models/address.model';
 import { States } from '../models/states';
 import { Contact } from '../models/contact.model';
+import { PhoneVerification } from '../models/phoneVerification.model';
 
 @Component({
   selector: 'app-user-profile',
@@ -125,4 +126,23 @@ export class UserProfileComponent implements OnInit {
       }
     );
   }  
+
+  verifyPhone(phoneNumber: string, userId: string): void {
+    const code = Math.floor(1000 + Math.random() * 9000);
+
+    const body : PhoneVerification = {
+      userId: userId,
+      phoneNumber: phoneNumber,
+      code: code,
+    };
+
+    this.userProfileService.verifyPhone(body).subscribe(
+      (response) => {
+        console.log('Solicitação enviada com sucesso:', response);
+      },
+      (error) => {
+        console.error('Erro ao enviar solicitação:', error);
+      }
+    );
+  }
 }

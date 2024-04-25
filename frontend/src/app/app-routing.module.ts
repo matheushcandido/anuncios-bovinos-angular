@@ -11,6 +11,7 @@ import { ReportComponent } from './report/report.component';
 import { UserComponent } from './user/user.component';
 import { UserCreateComponent } from './user-create/user-create.component';
 import { AnnouncementViewComponent } from './announcement-view/announcement-view.component';
+import { VerifyPhoneComponent } from './verify-phone/verify-phone.component';
 
 const routes: Routes = [
   { path: '', component: AnnouncementComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'registrar', component: RegisterComponent },
   { path: 'perfil', component: UserProfileComponent, canActivate: [AuthGuard] },
+  { path: 'verificar', component: VerifyPhoneComponent, canActivate: [AuthGuard] },
   { path: 'reportar', component: ReportCreateComponent, canActivate: [AuthGuard] },
   { path: 'reportes', component: ReportComponent, canActivate: [AuthGuard] },
   { path: 'usuarios', component: UserComponent, canActivate: [AuthGuard] },
