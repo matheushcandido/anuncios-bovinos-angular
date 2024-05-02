@@ -10,6 +10,7 @@ import { PhoneVerification } from '../models/phoneVerification.model';
 })
 export class UserProfileService {
   private baseUrl = 'http://localhost:8080/users';
+  private smsUrl = 'http://localhost:8080/sms/send';
   private tokenKey = 'auth-api';
   private proxyUrl = 'http://localhost:4200/apiviacep';
 
@@ -64,7 +65,7 @@ export class UserProfileService {
       const headers = new HttpHeaders({
         'Authorization': `Bearer ${token}`
       });
-      return this.http.post(this.baseUrl, body, { headers });
+      return this.http.post(this.smsUrl, body, { headers });
     } else {
       return new Observable();
     }
