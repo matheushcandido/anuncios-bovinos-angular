@@ -138,7 +138,7 @@ export class UserProfileComponent implements OnInit {
 
     this.userProfileService.verifyPhone(body).subscribe(
       (response) => {
-        console.log('Solicitação enviada com sucesso:', response);
+        this.router.navigate(['/verificar'], { queryParams: { userId: userId } });
       },
       (error) => {
         console.error('Erro ao enviar solicitação:', error);
