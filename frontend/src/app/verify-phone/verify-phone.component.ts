@@ -10,6 +10,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class VerifyPhoneComponent implements OnInit {
   code: string = '';
   userId: string = '';
+  errorMessage: string = '';
 
   constructor(
     private verifyService: VerifyPhoneService,
@@ -31,6 +32,7 @@ export class VerifyPhoneComponent implements OnInit {
       },
       error => {
         console.error('Erro ao verificar o código', error);
+        this.errorMessage = 'Ocorreu um erro ao verificar o código. Por favor, tente novamente.';
       }
     );
   }

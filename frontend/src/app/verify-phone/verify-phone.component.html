@@ -9,8 +9,11 @@
             <form>
               <div class="form-group">
                 <label for="code">Código recebido:</label>
-                <input type="text" id="code" class="form-control" [(ngModel)]="code" name="code" required>
-              </div>
+                <input type="text" id="code" class="form-control" [(ngModel)]="code" name="code" required [ngClass]="{'error-input': errorMessage}">
+                <div *ngIf="errorMessage" class="error-message">
+                  {{ errorMessage }}
+                </div>
+              </div>                           
               <div class="form-group mt-2">
                 <button type="button" class="btn btn-primary btn-block" (click)="verify()">Verificar</button>
               </div>
