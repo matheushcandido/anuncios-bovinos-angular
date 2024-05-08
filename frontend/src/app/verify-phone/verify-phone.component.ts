@@ -28,11 +28,15 @@ export class VerifyPhoneComponent implements OnInit {
   verify(): void {
     this.verifyService.verify(this.code, this.userId).subscribe(
       response => {
-        this.router.navigate(['/perfil']);
+        if (response === true) {
+          this.router.navigate(['/perfil']);
+        } else {
+          console.error('O código não foi validado com sucesso.');
+          this.errorMessage = 'O código inserido não é válido. Por favor, tente novamente.';
+        }
       },
       error => {
         console.error('Erro ao verificar o código', error);
-        this.errorMessage = 'Ocorreu um erro ao verificar o código. Por favor, tente novamente.';
       }
     );
   }
