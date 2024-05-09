@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   username!: string;
   password!: string;
+  errorMessage: string = '';
 
   constructor(private loginService: LoginService, private router: Router) { }
 
@@ -21,7 +22,8 @@ export class LoginComponent {
         this.router.navigate(['/']);
       },
       error => {
-        console.error('Login failed', error);
+        console.log("Erro ao efetuar login.", error);
+        this.errorMessage = 'Email/senha não coincidem.';
       }
     );
   }
